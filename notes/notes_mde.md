@@ -19,6 +19,7 @@
 ## Initial Setup
 
 - https://www.figma.com/plugin-docs/setup/
+
 - Remove boilerplate files
 
   ```bash
@@ -108,163 +109,37 @@
 
 ### Example 1: RectangleNode
 
-```ts
-/**
- * Example 1: RectangleNode
- * Demonstrates adding a RectangleNode to the document
- *
- * figma.createRectangle(): RectangleNode
- *
- * returns a RectangleNode with the following properties
- *    fill: default
- *    x: 0
- *    y: 0
- *    name: "Rectangle"
- *    width: 100
- *    height: 100
- *    parent: figma.currentPage
- *
- * Reference:
- *    https://www.figma.com/plugin-docs/api/properties/figma-createrectangle/
- *    https://www.figma.com/plugin-docs/api/properties/figma-closeplugin/
- *    https://www.figma.com/plugin-docs/api/RectangleNode/
- */
-
-figma.createRectangle()
-figma.closePlugin()
-```
-
+@import "example-01.ts"
 ![](images/example-01.png)
 
 ### Example 2: FrameNode with child
 
-```ts
-/**
- * Example 2: FrameNode with child
- * Demonstrates creating a FrameNode and RectangleNode
- * Make the RectangleNode a child of the FrameNode
- *
- * figma.createFrame(): FrameNode
- *
- * returns a FrameNode with the following properties
- *    fill: white
- *    x: 0
- *    y: 0
- *    name: "Frame"
- *    width: 100
- *    height: 100
- *    parent: figma.currentPage
- *
- * Reference:
- *    https://www.figma.com/plugin-docs/api/properties/figma-createframe/
- *    https://www.figma.com/plugin-docs/api/FrameNode/
- */
-
-const frame = figma.createFrame()
-const rectangle = figma.createRectangle()
-frame.appendChild(rectangle)
-figma.closePlugin()
-```
-
+@import "example-02.ts"
 ![](images/example-02.png)
 
 ### Example 3: Setting fill color
 
-```ts
-/**
- * Example 3: Setting fill color
- */
-
-const COLOR_BLACK: SolidPaint = { type: "SOLID", color: { r: 0, g: 0, b: 0 } }
-const rectangle = figma.createRectangle()
-rectangle.fills = [COLOR_BLACK]
-figma.closePlugin()
-```
-
+@import "example-03.ts"
 ![](images/example-03.png)
 
 ### Example 4: Setting position and size
 
-```ts
-/**
- * Example 4: Setting position and size
- */
-
-const rectangle = figma.createRectangle()
-rectangle.x = 5
-rectangle.y = 10
-rectangle.resize(50, 200) // width, height
-figma.closePlugin()
-```
-
+@import "example-04.ts"
 ![](images/example-04.png)
 
 ### Example 5: Setting node name
 
-```ts
-/**
- * Example 5: Setting node name
- */
-
-const rectangle = figma.createRectangle()
-rectangle.name = "figma-plugin-example"
-figma.closePlugin()
-```
-
+@import "example-05.ts"
 ![](images/example-05.png)
 
 ### Example 6: Create six rectangles
 
-```ts
-/**
- * Example 6: Create six rectangles
- */
-
-const NUMBER_OF_RECTANGLES = 6
-const SPACE_BETWEEN = 10
-
-for (let i = 0; i < NUMBER_OF_RECTANGLES; i++) {
-  const rectangle = figma.createRectangle()
-  rectangle.name = `rectangle-${i}`
-  rectangle.x = i * (rectangle.width + SPACE_BETWEEN)
-}
-figma.closePlugin()
-```
-
+@import "example-06.ts"
 ![](images/example-06.png)
 
 ### Example 7: Selecting nodes and zoom into view
 
-```ts
-/**
- * Example 7: Selecting nodes and zoom into view
- *
- * Reference:
- *    https://www.figma.com/plugin-docs/api/properties/PageNode-selection/
- *    https://www.figma.com/plugin-docs/accessing-document/#getting-the-current-selection
- *    https://www.figma.com/plugin-docs/editing-properties/
- */
-
-const NUMBER_OF_RECTANGLES = 6
-const SPACE_BETWEEN = 10
-
-// Create an array [0, 1, 2, 3, 4, 5]
-const indexes = [...Array(NUMBER_OF_RECTANGLES).keys()]
-
-// Create NUMBER_OF_RECTANGLES rectangles
-const nodes: SceneNode[] = indexes.map((i) => {
-  const rectangle = figma.createRectangle()
-  rectangle.name = `rectangle-${i}`
-  rectangle.x = i * (rectangle.width + SPACE_BETWEEN)
-  return rectangle
-})
-
-figma.currentPage.selection = nodes
-figma.viewport.scrollAndZoomIntoView(nodes)
-
-figma.closePlugin()
-```
-
+@import "example-07.ts"
 ![](images/example-07.png)
 
 ## References
