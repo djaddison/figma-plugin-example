@@ -108,6 +108,7 @@
 ## Examples
 
 ### Example 1: RectangleNode
+
 ```typescript
 /**
  * Example 1: RectangleNode
@@ -168,6 +169,8 @@ figma.closePlugin()
 
 ![](images/example-02.png)
 
+### Example 3: Setting fill color
+
 ```typescript
 /**
  * Example 3: Setting fill color
@@ -180,6 +183,8 @@ figma.closePlugin()
 ```
 
 ![](images/example-03.png)
+
+### Example 4: Setting position and size
 
 ```typescript
 /**
@@ -195,6 +200,8 @@ figma.closePlugin()
 
 ![](images/example-04.png)
 
+### Example 5: Setting node name
+
 ```typescript
 /**
  * Example 5: Setting node name
@@ -206,6 +213,26 @@ figma.closePlugin()
 ```
 
 ![](images/example-05.png)
+
+### Example 6: Create six rectangles
+
+```typescript
+/**
+ * Example 6: Create six rectangles
+ */
+
+const NUMBER_OF_RECTANGLES = 6
+const SPACE_BETWEEN = 10
+
+for (let i = 0; i < NUMBER_OF_RECTANGLES; i++) {
+  const rectangle = figma.createRectangle()
+  rectangle.name = `rectangle-${i}`
+  rectangle.x = i * (rectangle.width + SPACE_BETWEEN)
+}
+figma.closePlugin()
+```
+
+![](images/example-06.png)
 
 ## References
 
@@ -221,4 +248,3 @@ figma.closePlugin()
 - https://www.figma.com/plugin-docs/api/RectangleNode/
 - https://www.figma.com/plugin-docs/api/TextNode/
 - https://www.figma.com/plugin-docs/working-with-text/
-
